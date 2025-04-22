@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Dialog from '../components/dialog.astro';
+---
+
+<Layout>
+	<main class="py-12">
+		<!-- Caja contenedora -->
+		<div class="w-3xl mx-auto bg-azul-oscuro rounded-2xl border-2 border-azul-claro">
+			<!-- Header -->
+			<div class="py-4">
+				<h1 class="text-center text-3xl text-white tracking-widest">- FORO -</h1>
+			</div>
+			<hr class="text-white">
+			<!-- Titulo, imagen y num de comentarios -->
+			<div class="flex flex-col px-8 py-6 gap-4">
+				<h2 class="text-4xl font-medium text-white text-center">¡Comenta la fotografía de la semana!✍️</h2>
+				<img src="../../src/assets/img/japan.jpg" alt="Foto de Japón" class="rounded-lg" />
+				<div class="flex items-center">
+					<Dialog></Dialog>
+					<p id="numComentarios" class="font-medium text-white ml-1" >0 comentarios</p>
+				</div>
+			</div>
+			<!-- Boton comentario -->
+			<div class="flex justify-center pb-4">
+				<button id="iniciarModalComentarios" class="bg-azul-claro hover:bg-gris transition duration-400 text-white font-bold py-3 rounded-xl cursor-pointer w-[90%] text-lg tracking-widest">
+					COMENTAR
+				</button>
+			</div>
+			<!-- Comentario -->
+			<div id="comentario" class="flex flex-col px-8 py-4 gap-6">
+
+			</div>
+			<!-- Boton mostrar más -->
+			<div class="flex justify-center py-2">
+				<button id="botonMostrarMas" class="bg-blue-800 hover:bg-blue-700 transition duration-400 text-white font-bold py-2 rounded-xl cursor-pointer w-[60%] text-lg tracking-widest hidden">
+					MOSTRAR MÁS COMENTARIOS
+				</button>
+			</div>
+		</div>
+	</main>
+
+
+
+  
+  <!-- Modal de comentario -->
+  <div id="modalComentarios" tabindex="-1" class="flex fixed hidden overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+	<div class="fixed inset-0 bg-black/65"></div>
+	  <div class="relative p-4 w-full max-w-md max-h-full">
+		  <!-- Modal content -->
+		  <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+			  <!-- Modal header -->
+			  <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+				  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+					  Realizar comentario
+				  </h3>
+				  <button type="button" id="cerrarModalComentarios" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+					  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+						  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+					  </svg>
+					  <span class="sr-only">Cerrar modal</span>
+				  </button>
+			  </div>
+			  <!-- Modal body -->
+			  <div class="p-4 md:p-5">
+				  <form class="space-y-4" id="formularioComentarios">
+					  <div>
+						  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu usuario</label>
+						  <input type="text" name="username" id="info-user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Usuario" required />
+					  </div>
+					  <div>
+						  <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tu comentario</label>
+						  <textarea rows="6" id="info-comentario" placeholder="Comentario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+					  </div>
+					  <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer transition">Comentar</button>
+				  </form>
+			  </div>
+		  </div>
+	  </div>
+  </div>
+</Layout>
